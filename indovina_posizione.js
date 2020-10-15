@@ -6,7 +6,7 @@ let errori = 0
 let vittoria = false
 
 function setup() {
-  createCanvas(windowWidth - 50, windowHeight - 50)
+  createCanvas(windowWidth - 40, windowHeight - 20)
   let parametri = window.getURLParams()
   for (let i in TAVOLA.elementi) {
     for (let j in TAVOLA.elementi[i]) {
@@ -70,7 +70,7 @@ function draw() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth - 50, windowHeight - 50)
+  resizeCanvas(windowWidth - 40, windowHeight - 20)
 }
 
 function mouseClicked() {
