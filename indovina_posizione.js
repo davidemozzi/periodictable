@@ -4,9 +4,10 @@ let elemento
 let daIndovinare = []
 let errori = 0
 let vittoria = false
+let t = 0
 
 function setup() {
-  createCanvas(windowWidth - 40, windowHeight - 20)
+  createCanvas(windowWidth - 50, windowHeight - 50)
   let parametri = window.getURLParams()
   for (let i in TAVOLA.elementi) {
     for (let j in TAVOLA.elementi[i]) {
@@ -70,19 +71,22 @@ function draw() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth - 40, windowHeight - 20)
+  resizeCanvas(windowWidth - 50, windowHeight - 50)
 }
 
 function touchEnded() {
-  let risultato = TAVOLA.prova(mouseX, mouseY, elemento)
-  if (risultato == true) {
-    wait = false
-    daIndovinare.splice(daIndovinare.indexOf(elemento), 1)
-    if (daIndovinare.length == 0) {
-      vittoria = true
-      wait = true
+  if (millis() > t + 500) {
+    let risultato = TAVOLA.prova(mouseX, mouseY, elemento)
+    if (risultato == true) {
+      wait = false
+      daIndovinare.splice(daIndovinare.indexOf(elemento), 1)
+      if (daIndovinare.length == 0) {
+        vittoria = true
+        wait = true
+      }
+    } else if (risultato == false) {
+      errori++
     }
-  } else if (risultato == false) {
-    errori++
+    t = millis()
   }
 }
