@@ -73,7 +73,7 @@ function windowResized() {
   resizeCanvas(windowWidth - 40, windowHeight - 20)
 }
 
-function mouseClicked() {
+function touchEnded() {
   let risultato = TAVOLA.prova(mouseX, mouseY, elemento)
   if (risultato == true) {
     wait = false
